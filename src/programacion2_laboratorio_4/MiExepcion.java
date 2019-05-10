@@ -16,8 +16,9 @@ public class MiExepcion extends Exception {
     public MiExepcion() {
     }
 
-    public MiExepcion(String message) {
+    public MiExepcion(Color color,String message) {
         super(message);
+        this.color=color;
     }
 
     public Color getColor() {
