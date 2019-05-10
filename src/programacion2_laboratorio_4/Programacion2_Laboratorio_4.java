@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package programacion2_laboratorio_4;
 
-/**
- *
- * @author migue
- */
+import java.util.*;
+
 public class Programacion2_Laboratorio_4 {
 
-    /**
-     * @param args the command line arguments
-     */
+    static Scanner leer = new Scanner(System.in);
+    static ArrayList Equipos = new ArrayList();
+
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
+        while (true) {
+            System.out.print("1. Crear Equipos\n"
+                    + "2. Crear Jugadores\n"
+                    + "3. ");
+        }
+    }//Fin main
+
+}//Fin public class
