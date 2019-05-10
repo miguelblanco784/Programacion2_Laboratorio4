@@ -41,10 +41,7 @@ public class Pateador extends Jugador {
     }
 
     public void setHabpateadora(int habpateadora) {
-        while (habpateadora>100||habpateadora<1) {
-            System.out.println("No esta en rangos\nVuelva a ingresar");
-            habpateadora=input.nextInt();
-        }
+        this.habpateadora=habpateadora;
     }
 
     public void setFuerza(int fuerza) {
