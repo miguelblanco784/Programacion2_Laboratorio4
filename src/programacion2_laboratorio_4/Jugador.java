@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package programacion2_laboratorio_4;
 
 import java.util.Scanner;
-/**
- *
- * @author Francisco Pagoaga
- */
+
 public class Jugador {
-    
-    Scanner input=new Scanner(System.in);
+
+    Scanner input = new Scanner(System.in);
     private String nombre;
     private String apodo;
     private int numero;
@@ -20,13 +12,13 @@ public class Jugador {
     private String favbaloncesto;
     private String jugadorfav;
     private boolean mayoredad;
-    private int nacimiento;
+    private String nacimiento;
     private int numestrellas;
 
     public Jugador() {
     }
-    
-    public Jugador(String nombre, String apodo, int numero, String favfutbol, String favbaloncesto, String jugadorfav, boolean mayoredad, int nacimiento, int numestrellas) {
+
+    public Jugador(String nombre, String apodo, int numero, String favfutbol, String favbaloncesto, String jugadorfav, boolean mayoredad, String nacimiento, int numestrellas) {
         this.nombre = nombre;
         this.apodo = apodo;
         this.numero = numero;
@@ -66,7 +58,7 @@ public class Jugador {
         return mayoredad;
     }
 
-    public int getNacimiento() {
+    public String getNacimiento() {
         return nacimiento;
     }
 
@@ -102,26 +94,27 @@ public class Jugador {
         this.mayoredad = mayoredad;
     }
 
-    public void setNacimiento(int nacimiento) {
+    public void setNacimiento(String nacimiento) {
         this.nacimiento = nacimiento;
     }
 
     public void setNumestrellas(int numestrellas) {
-        while (numestrellas>5||numestrellas<1) {
+        while (numestrellas > 5 || numestrellas < 1) {
             System.out.println("Numero no valido\nIngrese numero de estrellas:");
-            numestrellas=input.nextInt();
+            numestrellas = input.nextInt();
         }
-        this.numestrellas=numestrellas;
+        this.numestrellas = numestrellas;
     }
-    
-    public boolean Atacar(){
+
+    public boolean Atacar() {
         return false;
     }//polimorfismo del metodo atacar
-    
-    public boolean tirode3(){
+
+    public boolean tirode3() {
         return false;
     } //polimorfismo de metodo para tiros de 3
-    public boolean tirode2(){
+
+    public boolean tirode2() {
         return true;
     }//polimorfismo de metodos para tiros de 2
 }

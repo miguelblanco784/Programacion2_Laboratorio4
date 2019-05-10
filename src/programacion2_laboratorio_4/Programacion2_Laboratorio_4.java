@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 public class Programacion2_Laboratorio_4 {
 
     static Scanner leer = new Scanner(System.in);
-    static ArrayList Equipos = new ArrayList();
+    static ArrayList<Equipo> Equipos = new ArrayList();
 
     public static void main(String[] args) {
         while (true) {
@@ -34,23 +34,68 @@ public class Programacion2_Laboratorio_4 {
                     String nombreduen = leer.next();
                     System.out.print("Ingrese la mascota: ");
                     String mascota = leer.next();
-                    System.out.print("Ingrese la fecha de creacion: \n"
-                            + "Ejemplo yyyy/MM/dd");
+                    System.out.print("Ingrese la fecha de creacion: ");
                     String fecha = leer.next();
-                    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-                    Date fechacreacion;
-                    try {
-                        fechacreacion = df.parse(fecha);
-                    } catch (ParseException ex) {
-                        System.out.println("La fecha fue ingresada mal no se agregara una fecha");
-                        fechacreacion = new Date();
-                    }
                     System.out.print("Ingrese el color: ");
                     String color = leer.next();
-
+                    Equipos.add(new Equipo(nombre, estadio, pais, nombreent, nombreduen, mascota, fecha, color));
                     break;//Fin break de pedir datos
                 case 2:
-
+                    for (int i = 0; i < Equipos.size(); i++) {
+                        System.out.println(i + 1 + "- " + Equipos.get(i));
+                    }
+                    System.out.print("Ingrese nombre: ");
+                    String nombrej = leer.next();
+                    System.out.print("Ingrese apodo: ");
+                    String apodoj = leer.next();
+                    System.out.print("Ingrese su numero: ");
+                    int numeroj = leer.nextInt();
+                    System.out.print("Ingrese su equipo de futbol favorito: ");
+                    String futfav = leer.next();
+                    System.out.print("Ingrese su equipo de baloncesto favorito: ");
+                    String basketfav = leer.next();
+                    System.out.print("Ingrese su jugador favorito: ");
+                    String jugadorfav = leer.next();
+                    System.out.print("1. Mayor edad\n"
+                            + "2. Menor edad\n"
+                            + "Ingrese opcion: ");
+                    boolean mayoredad;
+                    int temp1 = leer.nextInt();
+                    if (temp1 == 1) {
+                        mayoredad = true;
+                    } else {
+                        mayoredad = false;
+                    }
+                    System.out.print("Ingrese su fecha de nacimient: ");
+                    String fechanam = leer.next();
+                    System.out.print("Ingrese su estrellas: ");
+                    int estrellas = leer.nextInt();
+                    System.out.print("1. Pateador/n"
+                            + "2. Tirador/n"
+                            + "Ingrese opcion: ");
+                    int temp2 = leer.nextInt();
+                    switch (temp2) {
+                        case 1:
+                            System.out.print("Ingres su habilidad: ");
+                            int hablidad1 = leer.nextInt();
+                            System.out.print("Ingrese su fuerza: ");
+                            int fuerza1 = leer.nextInt();
+                            System.out.print("Ingrese su habilidad regateadora: ");
+                            int habgateadora1 = leer.nextInt();
+                            Equipos.get(temp1).agregarjugadores(new Pateador(hablidad1, fuerza1, habgateadora1, nombrej, apodoj, numeroj, futfav, basketfav, jugadorfav, mayoredad, fechanam, estrellas));
+                            break;
+                        case 2:
+                            System.out.print("Habilidad de tiros de 3: ");
+                            int tiro3 = leer.nextInt();
+                            System.out.print("Habilidad de tiros de 2: ");
+                            int tiro2 = leer.nextInt();
+                            System.out.print("Ingrese la habilidad de Tirador: ");
+                            int habtiro = leer.nextInt();
+                            Equipos.get(temp1).agregarjugadores(new Pateador(tiro3, tiro2, habtiro, nombrej, apodoj, numeroj, futfav, basketfav, jugadorfav, mayoredad, fechanam, estrellas));
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }//fin switch
                     break;
                 case 3:
 

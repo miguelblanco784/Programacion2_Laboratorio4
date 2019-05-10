@@ -19,14 +19,14 @@ public class Equipo {
     private String nomentrenador;
     private String nomduenio;
     private String mascota;
-    private Date fecha;
+    private String fecha;
     private String color;
     private ArrayList<Jugador> jugadores = new ArrayList();
 
     public Equipo() {
     }
 
-    public Equipo(String nombre, String estadio, String pais, String nomentrenador, String nomduenio, String mascota, Date fecha, String color) {
+    public Equipo(String nombre, String estadio, String pais, String nomentrenador, String nomduenio, String mascota, String fecha, String color) {
         this.nombre = nombre;
         this.estadio = estadio;
         this.pais = pais;
@@ -35,6 +35,10 @@ public class Equipo {
         this.mascota = mascota;
         this.fecha = fecha;
         this.color = color;
+    }
+
+    public void agregarjugadores(Jugador x) {
+        jugadores.add(x);
     }
 
     public String getNombre() {
@@ -85,11 +89,11 @@ public class Equipo {
         this.mascota = mascota;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
