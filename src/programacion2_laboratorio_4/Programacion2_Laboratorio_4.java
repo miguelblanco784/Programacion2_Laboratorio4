@@ -35,9 +35,9 @@ public class Programacion2_Laboratorio_4 {
 
                             break;
                         case 3:
-                            boolean v=true;
+                            boolean v = true;
                             System.out.print("Ingrese el nombre: ");
-                            String nombre=leer.next();
+                            String nombre = leer.next();
                             System.out.print("Ingrese nombre del estadio: ");
                             String estadio = leer.next();
                             System.out.print("Ingrese el pais: ");
@@ -73,14 +73,249 @@ public class Programacion2_Laboratorio_4 {
                             System.out.print("Ingrese su equipo: ");
                             int temp13 = leer.nextInt() - 1;
                             for (int i = 0; i < Equipos.get(temp13).getJugadores().size(); i++) {
-                                System.out.println(i + 1 + "- "+Equipos.get(temp13).getJugadores().get(i));
+                                System.out.println(i + 1 + "- " + Equipos.get(temp13).getJugadores().get(i));
                             }
+                            int op = leer.nextInt() - 1;
+                            Equipos.get(temp13).getJugadores().remove(op);
                             break;
                         case 2:
+                            for (int i = 0; i < Equipos.size(); i++) {
+                                System.out.println(i + 1 + "- " + Equipos.get(i));
+                            }
+                            System.out.print("Ingrese su equipo: ");
+                            temp13 = leer.nextInt() - 1;
+                            for (int i = 0; i < Equipos.get(temp13).getJugadores().size(); i++) {
+                                System.out.println(i + 1 + "- " + Equipos.get(temp13).getJugadores().get(i));
+                            }
+                            op = leer.nextInt() - 1;
+                            int opc;
+                            if (Equipos.get(temp13).getJugadores().get(op) instanceof Pateador) {
+                                System.out.println("Lista de modificar\n"
+                                        + "1)Nombre\n"
+                                        + "2)Apodo\n"
+                                        + "3)Numero\n"
+                                        + "4)Equipo de futbol favorito\n"
+                                        + "5)Equipo de baloncesto favorito\n"
+                                        + "6)Jugador Favorito\n"
+                                        + "7)Mayor de edad\n"
+                                        + "8)Fecha de Nacimiento\n"
+                                        + "9)Estrellas\n"
+                                        + "10)Habilidad Pateadora\n"
+                                        + "11)Fuerza\n"
+                                        + "12)Habilidad Regateadora");
+                                opc = leer.nextInt();
+                                boolean v = true;
+                                switch (opc) {
+                                    case 1:
+                                        System.out.print("Ingrese nombre: ");
+                                        String nombrej = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setNombre(nombrej);
+                                        break;
+                                    case 2:
+                                        System.out.print("Ingrese apodo: ");
+                                        String apodoj = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setApodo(apodoj);
+                                        break;
+                                    case 3:
+                                        System.out.print("Ingrese su numero: ");
+                                        int numeroj = leer.nextInt();
+                                        Equipos.get(temp13).getJugadores().get(op).setNumero(numeroj);
+                                        break;
+                                    case 4:
+                                        System.out.print("Ingrese su equipo de futbol favorito: ");
+                                        String futfav = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setFavfutbol(futfav);
+                                        break;
+                                    case 5:
+                                        System.out.print("Ingrese su equipo de baloncesto favorito: ");
+                                        String basketfav = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setFavbaloncesto(basketfav);
+                                        break;
+                                    case 6:
+                                        System.out.print("Ingrese su jugador favorito: ");
+                                        String jugadorfav = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setJugadorfav(jugadorfav);
+                                        break;
+                                    case 7:
+                                        System.out.print("1. Mayor edad\n"
+                                                + "2. Menor edad\n"
+                                                + "Ingrese opcion: ");
+                                        int temp1 = leer.nextInt();
+                                        if (temp1 == 1) {
+                                            Equipos.get(temp13).getJugadores().get(op).setMayoredad(true);
+                                        } else {
+                                            Equipos.get(temp13).getJugadores().get(op).setMayoredad(false);
+                                        }
+                                        break;
+                                    case 8:
+                                        System.out.print("Ingrese su fecha de nacimiento: ");
+                                        String fechanam = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setNacimiento(fechanam);
+                                        break;
+                                    case 9:
+                                        System.out.print("Ingrese su estrellas: ");
+                                        int estrellas = 0;
+                                        v = true;
+                                        while (v) {
+                                            try {
+                                                estrellas = leer.nextInt();
+                                                validestrellas(estrellas);
+                                                v = false;
+                                            } catch (MiExepcion e) {
+                                                System.out.println("Tienen que estar en rango del 1 al 5:");
+                                                v = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Ingrese numeros");
+                                                v = true;
+                                            }
+                                        }
+                                        Equipos.get(temp13).getJugadores().get(op).setNumestrellas(estrellas);
+                                        break;
+                                    case 10:
+                                        System.out.print("Ingres su habilidad: ");
+                                        int hablidad1 = 0;
+                                        v = true;
+                                        while (v) {
+                                            try {
+                                                hablidad1 = leer.nextInt();
+                                                validacion(hablidad1);
+                                                v = false;
+                                            } catch (MiExepcion e) {
+                                                System.out.println("Tienen que estar en rango del 1 al 100");
+                                                v = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Ingrese numeros");
+                                                v = true;
+                                            }
+                                        }
+                                        break;
+                                    case 11:
+                                        System.out.print("Ingrese su fuerza: ");
+                                        int fuerza1 = 0;
+                                        v = true;
+                                        while (v) {
+                                            try {
 
+                                                fuerza1 = leer.nextInt();
+                                                validacion(fuerza1);
+                                                v = false;
+                                            } catch (MiExepcion e) {
+                                                System.out.println("Tienen que estar en rango del 1 al 100");
+                                                v = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Ingrese numeros");
+                                                v = true;
+                                            }
+                                        }
+                                        
+                                        break;
+                                    case 12:
+                                        System.out.print("Ingrese su habilidad regateadora: ");
+                                        int habgateadora1 = 0;
+                                        v = true;
+                                        while (v) {
+                                            try {
+                                                habgateadora1 = leer.nextInt();
+                                                validacion(habgateadora1);
+                                                v = false;
+                                            } catch (MiExepcion e) {
+                                                System.out.println("Tienen que estar en rango del 1 al 100");
+                                                v = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Ingrese numeros");
+                                                v = true;
+                                            }
+                                        }
+                                        break;
+                                }
+                            } else if (Equipos.get(temp13).getJugadores().get(op) instanceof Tirador) {
+                                System.out.println("Lista de modificar\n"
+                                        + "1)Nombre\n"
+                                        + "2)Apodo\n"
+                                        + "3)Numero\n"
+                                        + "4)Equipo de futbol favorito\n"
+                                        + "5)Equipo de baloncesto favorito\n"
+                                        + "6)Jugador Favorito\n"
+                                        + "7)Mayor de edad\n"
+                                        + "8)Fecha de Nacimiento\n"
+                                        + "9)Estrellas\n"
+                                        + "10)Habilidad Pateadora\n"
+                                        + "11)Fuerza\n"
+                                        + "12)Habilidad Regateadora");
+                                opc = leer.nextInt();
+                                boolean v = true;
+                                switch (opc) {
+                                    case 1:
+                                        System.out.print("Ingrese nombre: ");
+                                        String nombrej = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setNombre(nombrej);
+                                        break;
+                                    case 2:
+                                        System.out.print("Ingrese apodo: ");
+                                        String apodoj = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setApodo(apodoj);
+                                        break;
+                                    case 3:
+                                        int numeroj = 0;
+                                        System.out.print("Ingrese su numero: ");
+                                        numeroj = leer.nextInt();
+                                        Equipos.get(temp13).getJugadores().get(op).setNumero(numeroj);
+                                        break;
+                                    case 4:
+                                        System.out.print("Ingrese su equipo de futbol favorito: ");
+                                        String futfav = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setFavfutbol(futfav);
+                                        break;
+                                    case 5:
+                                        System.out.print("Ingrese su equipo de baloncesto favorito: ");
+                                        String basketfav = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setFavbaloncesto(basketfav);
+                                        break;
+                                    case 6:
+                                        System.out.print("Ingrese su jugador favorito: ");
+                                        String jugadorfav = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setJugadorfav(jugadorfav);
+                                        break;
+                                    case 7:
+                                        System.out.print("1. Mayor edad\n"
+                                                + "2. Menor edad\n"
+                                                + "Ingrese opcion: ");
+                                        int temp1 = leer.nextInt();
+                                        if (temp1 == 1) {
+                                            Equipos.get(temp13).getJugadores().get(op).setMayoredad(true);
+                                        } else {
+                                            Equipos.get(temp13).getJugadores().get(op).setMayoredad(false);
+                                        }
+                                        break;
+                                    case 8:
+                                        System.out.print("Ingrese su fecha de nacimiento: ");
+                                        String fechanam = leer.next();
+                                        Equipos.get(temp13).getJugadores().get(op).setNacimiento(fechanam);
+                                        break;
+                                    case 9:
+                                        System.out.print("Ingrese su estrellas: ");
+                                        int estrellas = 0;
+                                        v = true;
+                                        while (v) {
+                                            try {
+                                                estrellas = leer.nextInt();
+                                                validestrellas(estrellas);
+                                                v = false;
+                                            } catch (MiExepcion e) {
+                                                System.out.println("Tienen que estar en rango del 1 al 5:");
+                                                v = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Ingrese numeros");
+                                                v = true;
+                                            }
+                                        }
+                                        Equipos.get(temp13).getJugadores().get(op).setNumestrellas(estrellas);
+                                        break;
+                                }
+                            }
                             break;
                         case 3:
-                            boolean v=true;
+                            boolean v = true;
                             for (int i = 0; i < Equipos.size(); i++) {
                                 System.out.println(i + 1 + "- " + Equipos.get(i));
                             }
@@ -90,9 +325,9 @@ public class Programacion2_Laboratorio_4 {
                             String nombrej = leer.next();
                             System.out.print("Ingrese apodo: ");
                             String apodoj = leer.next();
-                            int numeroj=0;
+                            int numeroj = 0;
                             System.out.print("Ingrese su numero: ");
-                            numeroj=leer.nextInt();
+                            numeroj = leer.nextInt();
                             System.out.print("Ingrese su equipo de futbol favorito: ");
                             String futfav = leer.next();
                             System.out.print("Ingrese su equipo de baloncesto favorito: ");
@@ -109,26 +344,25 @@ public class Programacion2_Laboratorio_4 {
                             } else {
                                 mayoredad = false;
                             }
-                            System.out.print("Ingrese su fecha de nacimient: ");
+                            System.out.print("Ingrese su fecha de nacimiento: ");
                             String fechanam = leer.next();
                             System.out.print("Ingrese su estrellas: ");
-                            int estrellas=0;
-                            v=true;
+                            int estrellas = 0;
+                            v = true;
                             while (v) {
-                                        try{
-                                            
-                                            estrellas = leer.nextInt();
-                                            validestrellas(estrellas);
-                                            v=false;
-                                        }catch(MiExepcion e){
-                                            System.out.println("Tienen que estar en rango del 1 al 5:");
-                                            v=true;
-                                        } 
-                                        catch(InputMismatchException e){
-                                            System.out.println("Ingrese numeros");
-                                            v=true;
-                                        }
-                                    }
+                                try {
+
+                                    estrellas = leer.nextInt();
+                                    validestrellas(estrellas);
+                                    v = false;
+                                } catch (MiExepcion e) {
+                                    System.out.println("Tienen que estar en rango del 1 al 5:");
+                                    v = true;
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Ingrese numeros");
+                                    v = true;
+                                }
+                            }
                             System.out.print("1. Pateador\n"
                                     + "2. Tirador\n"
                                     + "Ingrese opcion: ");
@@ -136,111 +370,105 @@ public class Programacion2_Laboratorio_4 {
                             switch (temp2) {
                                 case 1:
                                     System.out.print("Ingres su habilidad: ");
-                                    int hablidad1=0;
-                                    v=true;
+                                    int hablidad1 = 0;
+                                    v = true;
                                     while (v) {
-                                        try{
+                                        try {
                                             hablidad1 = leer.nextInt();
                                             validacion(hablidad1);
-                                            v=false;
-                                        }catch(MiExepcion e){
+                                            v = false;
+                                        } catch (MiExepcion e) {
                                             System.out.println("Tienen que estar en rango del 1 al 100");
-                                            v=true;
-                                        } 
-                                        catch(InputMismatchException e){
+                                            v = true;
+                                        } catch (InputMismatchException e) {
                                             System.out.println("Ingrese numeros");
-                                            v=true;
+                                            v = true;
                                         }
                                     }
                                     System.out.print("Ingrese su fuerza: ");
-                                    int fuerza1=0;
-                                    v=true;
+                                    int fuerza1 = 0;
+                                    v = true;
                                     while (v) {
-                                        try{
-                                            
+                                        try {
+
                                             fuerza1 = leer.nextInt();
                                             validacion(fuerza1);
-                                            v=false;
-                                        }catch(MiExepcion e){
+                                            v = false;
+                                        } catch (MiExepcion e) {
                                             System.out.println("Tienen que estar en rango del 1 al 100");
-                                            v=true;
-                                        } 
-                                        catch(InputMismatchException e){
+                                            v = true;
+                                        } catch (InputMismatchException e) {
                                             System.out.println("Ingrese numeros");
-                                            v=true;
+                                            v = true;
                                         }
                                     }
                                     System.out.print("Ingrese su habilidad regateadora: ");
-                                    int habgateadora1=0;
-                                    v=true;
+                                    int habgateadora1 = 0;
+                                    v = true;
                                     while (v) {
-                                        try{
+                                        try {
                                             habgateadora1 = leer.nextInt();
                                             validacion(habgateadora1);
-                                            v=false;
-                                        }catch(MiExepcion e){
+                                            v = false;
+                                        } catch (MiExepcion e) {
                                             System.out.println("Tienen que estar en rango del 1 al 100");
-                                            v=true;
-                                        } 
-                                        catch(InputMismatchException e){
+                                            v = true;
+                                        } catch (InputMismatchException e) {
                                             System.out.println("Ingrese numeros");
-                                            v=true;
+                                            v = true;
                                         }
                                     }
-                                    
+
                                     Equipos.get(temp10).agregarjugadores(new Pateador(hablidad1, fuerza1, habgateadora1, nombrej, apodoj, numeroj, futfav, basketfav, jugadorfav, mayoredad, fechanam, estrellas));
                                     break;
                                 case 2:
                                     System.out.print("Habilidad de tiros de 3: ");
-                                    int tiro3=0;
-                                    v=true;
+                                    int tiro3 = 0;
+                                    v = true;
                                     while (v) {
-                                        try{
+                                        try {
                                             tiro3 = leer.nextInt();
                                             validacion(tiro3);
-                                            v=false;
-                                        }catch(MiExepcion e){
+                                            v = false;
+                                        } catch (MiExepcion e) {
                                             System.out.println("Tienen que estar en rango del 1 al 100");
-                                            v=true;
-                                        } 
-                                        catch(InputMismatchException e){
+                                            v = true;
+                                        } catch (InputMismatchException e) {
                                             System.out.println("Ingrese numeros");
-                                            v=true;
+                                            v = true;
                                         }
                                     }
-                               
+
                                     System.out.print("Habilidad de tiros de 2: ");
-                                    int tiro2=0;
-                                    v=true;
+                                    int tiro2 = 0;
+                                    v = true;
                                     while (v) {
-                                        try{
+                                        try {
                                             tiro2 = leer.nextInt();
                                             validacion(tiro2);
-                                            v=false;
-                                        }catch(MiExepcion e){
+                                            v = false;
+                                        } catch (MiExepcion e) {
                                             System.out.println("Tienen que estar en rango del 1 al 100");
-                                            v=true;
-                                        } 
-                                        catch(InputMismatchException e){
+                                            v = true;
+                                        } catch (InputMismatchException e) {
                                             System.out.println("Ingrese numeros");
-                                            v=true;
+                                            v = true;
                                         }
                                     }
                                     System.out.print("Ingrese la habilidad de Tirador: ");
-                                    v=true;
-                                    int habtiro=0;
+                                    v = true;
+                                    int habtiro = 0;
                                     while (v) {
-                                        try{
+                                        try {
                                             habtiro = leer.nextInt();
                                             validacion(habtiro);
-                                            v=false;
-                                        }catch(MiExepcion e){
+                                            v = false;
+                                        } catch (MiExepcion e) {
                                             System.out.println("Tienen que estar en rango del 1 al 100");
-                                            v=true;
-                                        } 
-                                        catch(InputMismatchException e){
+                                            v = true;
+                                        } catch (InputMismatchException e) {
                                             System.out.println("Ingrese numeros");
-                                            v=true;
+                                            v = true;
                                         }
                                     }
                                     Equipos.get(temp10).agregarjugadores(new Pateador(tiro3, tiro2, habtiro, nombrej, apodoj, numeroj, futfav, basketfav, jugadorfav, mayoredad, fechanam, estrellas));
@@ -262,14 +490,16 @@ public class Programacion2_Laboratorio_4 {
             }//Fin switch opciones
         }//Fin while infinito 
     }//Fin main
-    static void validacion(int x) throws MiExepcion{
-        if(x>100||x<1){
-            throw new MiExepcion(Color.red,"No se aceptan valor mayores que 100 o menores que 1");
+
+    static void validacion(int x) throws MiExepcion {
+        if (x > 100 || x < 1) {
+            throw new MiExepcion(Color.red, "No se aceptan valor mayores que 100 o menores que 1");
         }
     }
-    static void validestrellas(int x) throws MiExepcion{
-        if (x>5||x<1) {
-            throw new MiExepcion(Color.red,"Rangos tienen que estar entre 1-5");
+
+    static void validestrellas(int x) throws MiExepcion {
+        if (x > 5 || x < 1) {
+            throw new MiExepcion(Color.red, "Rangos tienen que estar entre 1-5");
         }
     }
 }//Fin public class
