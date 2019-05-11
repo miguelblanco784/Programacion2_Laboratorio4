@@ -14,6 +14,7 @@ public class Jugador {
     private boolean mayoredad;
     private String nacimiento;
     private int numestrellas;
+    private boolean latiene;
 
     public Jugador() {
     }
@@ -28,6 +29,14 @@ public class Jugador {
         this.mayoredad = mayoredad;
         this.nacimiento = nacimiento;
         this.numestrellas = numestrellas;
+    }
+
+    public boolean isLatiene() {
+        return latiene;
+    }
+
+    public void setLatiene(boolean latiene) {
+        this.latiene = latiene;
     }
 
     public String getNombre() {
